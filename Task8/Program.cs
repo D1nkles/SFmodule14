@@ -11,11 +11,7 @@ class Program
             300,
         };
 
-        var names = from object obj in objects where obj.GetType() == typeof(string) orderby obj select obj;
-
-        foreach (string name in names) 
-        {
-            Console.WriteLine(name);
-        }
+        foreach (string name in from object obj in objects.Where(obj => obj is string).OrderBy(obj => obj) select obj) 
+            Console.WriteLine(name); 
     }
 }
