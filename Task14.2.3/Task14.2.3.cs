@@ -22,7 +22,7 @@ class Program
         new Student { Name = "Василий", Age = 24, Languages = new List<string> { "испанский", "немецкий" } }
     };
 
-        var applications = from student in students 
+        var application = from student in students 
                           where student.Age < 27
                           let yearOfBirth = DateTime.Now.Year - student.Age
                           select new Application()
@@ -30,9 +30,9 @@ class Program
                               Name = student.Name,
                               YearOfBirth = yearOfBirth
                           };
-        foreach (Application app in applications) 
+        foreach (Application student in application) 
         {
-            Console.WriteLine(app.Name + "\t" + app.YearOfBirth);
+            Console.WriteLine(student.Name + "\t" + student.YearOfBirth);
         }
     }
 }
