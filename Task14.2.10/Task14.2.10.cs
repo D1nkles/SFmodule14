@@ -15,6 +15,8 @@
             phoneBook.Add(new Contact("Сергей", "Брин", 799900000013, "serg@example.com"));
             phoneBook.Add(new Contact("Иннокентий", "Смоктуновский", 799900000013, "innokentii@example.com"));
 
+            var sortedPhoneBook = phoneBook.OrderBy(s => s.Name).ThenBy(s => s.LastName);
+
             int contactsLenght = phoneBook.Count();
             int pages = contactsLenght / 2;
             int pageCount = 1;
@@ -31,9 +33,9 @@
                         Console.Clear();
                         skipContacts = 0;
                         pageCount = 1;
-                        foreach (var info in from contact in phoneBook.Skip(skipContacts).Take(2) select contact)
+                        foreach (var info in from contact in sortedPhoneBook.Skip(skipContacts).Take(2) select contact)
                         {
-                            Console.WriteLine(info.Name + "\t" + info.PhoneNumber);
+                            Console.WriteLine(info.Name + "\t" + info.LastName + "\t" + info.PhoneNumber);
                         }
                         Console.WriteLine($"Страница номер {pageCount}");
                         break;
@@ -42,9 +44,9 @@
                         Console.Clear();
                         skipContacts = 2;
                         pageCount = 2;
-                        foreach (var info in from contact in phoneBook.Skip(skipContacts).Take(2) select contact)
+                        foreach (var info in from contact in sortedPhoneBook.Skip(skipContacts).Take(2) select contact)
                         {
-                            Console.WriteLine(info.Name + "\t" + info.PhoneNumber);
+                            Console.WriteLine(info.Name + "\t" + info.LastName + "\t" + info.PhoneNumber);
                         }
                         Console.WriteLine($"Страница номер {pageCount}");
                         break;
@@ -53,9 +55,9 @@
                         Console.Clear();
                         skipContacts = 4;
                         pageCount = 1;
-                        foreach (var info in from contact in phoneBook.Skip(skipContacts).Take(2) select contact)
+                        foreach (var info in from contact in sortedPhoneBook.Skip(skipContacts).Take(2) select contact)
                         {
-                            Console.WriteLine(info.Name + "\t" + info.PhoneNumber);
+                            Console.WriteLine(info.Name + "\t" + info.LastName +"\t" + info.PhoneNumber);
                         }
                         Console.WriteLine($"Страница номер {pageCount}");
                         break;
